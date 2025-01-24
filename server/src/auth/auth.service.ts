@@ -46,14 +46,24 @@ export class AuthService {
     const salt = await bcrypt.genSalt();
     const hashedPassword = await bcrypt.hash(pass, salt);
 
-    const user = await this.prisma.user.create({
-      data: {
-        email,
-        password: hashedPassword,
-      },
-    });
+    try {
+      const user = await this.prisma.user.create({
+        data: {
+          email,
+          password: hashedPassword,
+        },
+      });
 
-    const { password, ...result } = user;
-    return result;
+      const { password, ...result } = user;
+      return result;
+    } catch (error) {
+      if (error.code === 'P2002') {
+        return {
+          error: 'There is user with provided email',
+        };
+      }
+
+      throw error;
+    }
   }
 }
