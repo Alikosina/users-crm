@@ -1,3 +1,5 @@
+import { Layout } from "../../../shared/ui/layout";
+
 export const LoginPage = () => {
-  return <div>Login</div>;
+  return <Layout>Login</Layout>;
 };
