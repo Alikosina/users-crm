@@ -1,5 +1,13 @@
 @use "../../styles/variables.scss" as *;
 
 .input {
-  border-color: $grey-color;
+  border: none;
+  border: 1px solid $grey-color;
+  box-shadow: none;
+  background: #fff;
+  padding: 6px 12px;
+  border-radius: 8px;
+  user-select: none;
+  outline: none;
+  font-family: "Roboto";
 }
