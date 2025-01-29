@@ -5,9 +5,14 @@
   border: 1px solid $grey-color;
   box-shadow: none;
   background: #fff;
-  padding: 6px 12px;
+  padding: 8px 12px;
   border-radius: 8px;
   user-select: none;
   outline: none;
   font-family: "Roboto";
+  box-sizing: border-box;
+}
+
+.fullWidth {
+  width: 100%;
 }

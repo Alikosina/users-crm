@@ -1,18 +1,18 @@
 import { Controller, useFormContext } from "react-hook-form";
-import { Input } from "../input/Input";
+import { Input, InputProps } from "../input/Input";
 
-type Props = {
+type Props = InputProps & {
   name: string;
 };
 
-export const InputField = ({ name }: Props) => {
+export const InputField = ({ name, ...props }: Props) => {
   const { control } = useFormContext();
 
   return (
     <Controller
       control={control}
       name={name}
-      render={({ field }) => <Input {...field} />}
+      render={({ field }) => <Input {...props} {...field} />}
     />
   );
 };
