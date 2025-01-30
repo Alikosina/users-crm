@@ -1,5 +1,5 @@
-import { Layout } from "../../../shared/ui/layout";
-import { LoginForm } from "../../../widgets/login-form";
+import { Layout } from "../../../widgets/layout";
+import { LoginForm } from "../../features/login-form";
 
 import styles from "./LoginPage.module.scss";
 

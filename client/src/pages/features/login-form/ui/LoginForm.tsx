@@ -1,7 +1,7 @@
 import { Grid2 } from "@mui/material";
 import { FormProvider, useForm } from "react-hook-form";
 
-import { InputField } from "../../../shared/ui/input-field";
+import { InputField } from "../../../../shared/ui/input-field";
 
 import styles from "./LoginForm.module.scss";
 
