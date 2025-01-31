@@ -1,8 +1,8 @@
 import bg from "./auth-bg.png";
 
-import styles from "./Layout.module.scss";
+import styles from "./AuthLayout.module.scss";
 
-export const Layout = ({ children }: { children: React.ReactNode }) => {
+export const AuthLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className={styles.layout}>
       <div className={styles.aside}>
