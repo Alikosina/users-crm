@@ -1,3 +1,19 @@
+@use "../../../shared/styles/variables.scss" as *;
+
 .title {
   text-align: center;
+}
+
+.forgot {
+  color: $link-color;
+  cursor: pointer;
+  text-align: center;
+  font-size: 14px;
+}
+
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 300px;
 }

@@ -6,10 +6,12 @@ export type LoginParams = {
 };
 
 export const login = async ({ email, password }: LoginParams) => {
-  const { data } = await apiClient.post("/auth/login", {
+  const { data } = await apiClient.post<{
+    accessToken: string;
+  }>("/auth/login", {
     email,
     password,
   });
 
-  return data;
+  return data.accessToken;
 };

@@ -29,7 +29,10 @@ const authSlice = createSlice({
   reducers: {},
   extraReducers: ({ addCase }) => {
     addCase(loginUser.fulfilled, (state, { payload }) => {
-      console.log("payload = ", payload);
+      // TODO: Save at Local Storage
+      console.log("accessToken = ", payload);
+
+      state.isAuthorized = true;
     });
   },
 });
