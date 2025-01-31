@@ -1,11 +1,17 @@
-import { Grid2 } from "@mui/material";
 import { FormProvider, useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
 
-import { InputField } from "../../../shared/ui/input-field";
+import { AppDispatch } from "@/app/store";
+import { loginUser } from "@/entities/auth/model/authActions";
+import { Grid2 } from "@mui/material";
+import { InputField } from "@/shared/ui/input-field";
 
 import styles from "./LoginForm.module.scss";
+import { Button } from "@/shared/ui/button";
 
 export const LoginForm = () => {
+  const dispatch = useDispatch<AppDispatch>();
+
   const methods = useForm({
     defaultValues: {
       email: "",
@@ -33,6 +39,19 @@ export const LoginForm = () => {
                 type="password"
                 placeholder="Type password..."
               />
+            </div>
+            <div>
+              <Button
+                onClick={(e) => {
+                  e.preventDefault();
+
+                  methods.handleSubmit((values) => {
+                    dispatch(loginUser(values));
+                  })();
+                }}
+              >
+                Login
+              </Button>
             </div>
           </Grid2>
         </form>

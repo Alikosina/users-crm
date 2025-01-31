@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { loginUser } from "./authActions";
 
 export type TUser = {
   email: string;
@@ -26,6 +27,11 @@ const authSlice = createSlice({
   initialState,
   name: "auth",
   reducers: {},
+  extraReducers: ({ addCase }) => {
+    addCase(loginUser.fulfilled, (state, { payload }) => {
+      console.log("payload = ", payload);
+    });
+  },
 });
 
 export const { reducer } = authSlice;

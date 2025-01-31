@@ -4,3 +4,5 @@ import { reducer as authReducer } from "@/entities/auth/model";
 export const store = configureStore({
   reducer: combineReducers({ auth: authReducer }),
 });
+
+export type AppDispatch = typeof store.dispatch;
