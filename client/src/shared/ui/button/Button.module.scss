@@ -6,4 +6,9 @@
   padding: 10px 15px;
   border-radius: 8px;
   cursor: pointer;
+
+  &.fullWidth {
+    width: 100%;
+    text-align: center;
+  }
 }

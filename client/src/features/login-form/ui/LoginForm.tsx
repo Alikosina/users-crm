@@ -1,13 +1,15 @@
+import { useCallback } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
+import { Grid2 } from "@mui/material";
 
 import { AppDispatch } from "@/app/store";
 import { loginUser } from "@/entities/auth/model/authActions";
-import { Grid2 } from "@mui/material";
 import { InputField } from "@/shared/ui/input-field";
+import { Button } from "@/shared/ui/button";
+import { LoginParams } from "@/entities/auth/api";
 
 import styles from "./LoginForm.module.scss";
-import { Button } from "@/shared/ui/button";
 
 export const LoginForm = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -18,6 +20,20 @@ export const LoginForm = () => {
       password: "",
     },
   });
+
+  const handleLogin = useCallback(
+    (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+      e.preventDefault();
+
+      methods.handleSubmit((values: LoginParams) => {
+        dispatch(loginUser(values));
+      })();
+    },
+    [methods]
+  );
+
+  const handleRegister = useCallback(() => {}, []);
+
   return (
     <div>
       <h2 className={styles.title}>Login</h2>
@@ -41,16 +57,13 @@ export const LoginForm = () => {
               />
             </div>
             <div>
-              <Button
-                onClick={(e) => {
-                  e.preventDefault();
-
-                  methods.handleSubmit((values) => {
-                    dispatch(loginUser(values));
-                  })();
-                }}
-              >
+              <Button fullWidth onClick={handleLogin}>
                 Login
+              </Button>
+            </div>
+            <div>
+              <Button fullWidth onClick={handleRegister}>
+                Register
               </Button>
             </div>
           </Grid2>
