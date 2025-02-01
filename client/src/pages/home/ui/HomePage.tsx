@@ -1,5 +1,10 @@
 import { MainLayout } from "@/widgets/main-layout";
+import { Users } from "@/widgets/users";
 
 export const HomePage = () => {
-  return <MainLayout>Home Page</MainLayout>;
+  return (
+    <MainLayout>
+      <Users />
+    </MainLayout>
+  );
 };

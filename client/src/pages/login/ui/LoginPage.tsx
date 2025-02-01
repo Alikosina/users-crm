@@ -1,5 +1,5 @@
 import { AuthLayout } from "@/widgets/auth-layout";
-import { LoginForm } from "../../../features/login-form";
+import { LoginForm } from "@/features/login-form";
 
 import styles from "./LoginPage.module.scss";
 

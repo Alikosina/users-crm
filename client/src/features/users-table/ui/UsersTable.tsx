@@ -1,3 +1,3 @@
 export const UsersTable = () => {
-  return <div>UsersTable</div>;
+  return <div>Users Table</div>;
 };
