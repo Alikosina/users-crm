@@ -1,3 +1,5 @@
+import { MainLayout } from "@/widgets/main-layout";
+
 export const HomePage = () => {
-  return <div>Home Page</div>;
+  return <MainLayout>Home Page</MainLayout>;
 };

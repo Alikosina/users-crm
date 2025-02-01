@@ -1,9 +1,9 @@
-@use "../../shared/styles/variables.scss" as *;
+@use "../../../shared/styles/variables.scss" as *;
 
 .layout {
   width: 100%;
   min-height: 100vh;
-  background-color: $bg-color;
+  background-color: $auth-bg-color;
   display: flex;
 
   & > div {
