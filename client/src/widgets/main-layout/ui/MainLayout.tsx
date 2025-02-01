@@ -5,5 +5,9 @@ type Props = {
 };
 
 export const MainLayout = ({ children }: Props) => {
-  return <div className={styles.layout}>{children}</div>;
+  return (
+    <div className={styles.layout}>
+      <div className={styles.inner}>{children}</div>
+    </div>
+  );
 };
