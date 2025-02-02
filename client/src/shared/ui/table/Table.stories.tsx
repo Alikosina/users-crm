@@ -6,10 +6,15 @@ const meta: Meta<typeof Table> = {
   component: Table,
   render: () => (
     <Table
+      rowKey="id"
       data={[
         {
           id: 1,
           name: "Test",
+        },
+        {
+          id: 2,
+          name: "Test2",
         },
       ]}
       columns={[
