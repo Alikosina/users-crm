@@ -18,21 +18,25 @@ export const Table = <T extends unknown>({
   rowKey,
 }: Props<T>) => {
   return (
-    <table className={styles.table}>
-      <thead>
-        {columns.map((col) => (
-          <th key={col.key}>{col.title}</th>
-        ))}
-      </thead>
-      <tbody>
-        {data.map((row: any) => (
-          <tr key={row[rowKey]}>
-            {columns.map((col) => (
-              <td key={col.key}>{row[col.key]}</td>
-            ))}
-          </tr>
-        ))}
-      </tbody>
-    </table>
+    <div className={styles.container}>
+      <table className={styles.table}>
+        <thead>
+          {columns.map((col) => (
+            <th key={col.key}>{col.title}</th>
+          ))}
+        </thead>
+        <tbody>
+          {data.map((row: any) => (
+            <tr key={row[rowKey]}>
+              {columns.map((col) => (
+                <td key={col.key}>
+                  {col.renderCell ? col.renderCell(row) : row[col.key]}
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 };

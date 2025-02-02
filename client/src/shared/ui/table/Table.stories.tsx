@@ -25,6 +25,7 @@ const meta: Meta<typeof Table> = {
         {
           key: "name",
           title: "name",
+          renderCell: (row) => <span>Имя: {row.name}</span>,
         },
       ]}
     />
