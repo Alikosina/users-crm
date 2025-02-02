@@ -21,6 +21,7 @@ const meta: Meta<typeof Table> = {
         {
           key: "id",
           title: "id",
+          width: "100px",
         },
         {
           key: "name",

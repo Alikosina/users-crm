@@ -4,6 +4,7 @@ type Column<T extends unknown> = {
   key: string;
   title: string;
   renderCell?: (row: T) => React.ReactNode;
+  width?: string | number;
 };
 
 type Props<T extends unknown> = {
@@ -29,7 +30,7 @@ export const Table = <T extends unknown>({
           {data.map((row: any) => (
             <tr key={row[rowKey]}>
               {columns.map((col) => (
-                <td key={col.key}>
+                <td width={col.width} key={col.key}>
                   {col.renderCell ? col.renderCell(row) : row[col.key]}
                 </td>
               ))}
