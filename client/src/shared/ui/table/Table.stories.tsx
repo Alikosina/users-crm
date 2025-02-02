@@ -4,7 +4,7 @@ import { Table } from "./Table";
 
 const meta: Meta<typeof Table> = {
   component: Table,
-  render: () => <Table />,
+  render: () => <Table data={[]} columns={[]} />,
 };
 
 export default meta;
