@@ -9,7 +9,7 @@ type Column<T extends unknown> = {
 
 type Props<T extends unknown> = {
   data: T[];
-  rowKey: string;
+  rowKey: keyof T;
   columns: Array<Column<T>>;
 };
 
