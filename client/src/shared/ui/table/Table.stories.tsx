@@ -4,7 +4,26 @@ import { Table } from "./Table";
 
 const meta: Meta<typeof Table> = {
   component: Table,
-  render: () => <Table data={[]} columns={[]} />,
+  render: () => (
+    <Table
+      data={[
+        {
+          id: 1,
+          name: "Test",
+        },
+      ]}
+      columns={[
+        {
+          key: "id",
+          title: "id",
+        },
+        {
+          key: "name",
+          title: "name",
+        },
+      ]}
+    />
+  ),
 };
 
 export default meta;
