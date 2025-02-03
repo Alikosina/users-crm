@@ -18,3 +18,21 @@ model User {
 
   password String
 }
+
+model CrmUser {
+  id       Int     @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  email    String  @unique
+
+  firstName String?
+  lastName  String?
+  status CrmUserStatus
+}
+
+
+enum CrmUserStatus {
+  NEW
+  COMPLETED
+  DELETED
+}
