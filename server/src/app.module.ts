@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
 import { APP_GUARD } from '@nestjs/core';
 import { ConfigModule } from '@nestjs/config';
-import { AtGuard } from './auth/auth.guard';
 import { AuthModule } from './auth/auth.module';
 import { CrmUsersModule } from './crm-users/crm-users.module';
+import { ATGuard } from './common/guards';
 
 @Module({
   imports: [
@@ -14,7 +14,7 @@ import { CrmUsersModule } from './crm-users/crm-users.module';
   providers: [
     {
       provide: APP_GUARD,
-      useClass: AtGuard,
+      useClass: ATGuard,
     },
   ],
 })
