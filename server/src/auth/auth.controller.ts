@@ -6,13 +6,16 @@ import {
   Get,
   Request,
 } from '@nestjs/common';
-import { AuthGuard } from './auth.guard';
+import { Public } from '../common/decorators';
+import { AtGuard } from './auth.guard';
+// import { AuthGuard } from '@nestjs/passport';
 import { AuthService } from './auth.service';
 
 @Controller('auth')
 export class AuthController {
   constructor(private authService: AuthService) {}
 
+  @Public()
   @Post('login')
   async login(@Body() req: { email: string; password: string }) {
     return this.authService.login(req);
@@ -23,7 +26,6 @@ export class AuthController {
     return this.authService.register(req.email, req.password);
   }
 
-  @UseGuards(AuthGuard)
   @Get('profile')
   getProfile(@Request() req) {
     return req.user;

@@ -1,19 +1,19 @@
 import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
 import { CrmUser } from '@prisma/client';
-import { AuthGuard } from '../auth/auth.guard';
+import { AtGuard } from '../auth/auth.guard';
 import { CrmUsersService } from './crm-users.service';
 
 @Controller('crm-users')
 export class CrmUsersController {
   constructor(private crmUsersService: CrmUsersService) {}
 
-  @UseGuards(AuthGuard)
+  @UseGuards(AtGuard)
   @Post('create')
   async createCrmUser(@Body() req: Omit<CrmUser, 'id'>) {
     return this.crmUsersService.createCrmUser(req);
   }
 
-  @UseGuards(AuthGuard)
+  @UseGuards(AtGuard)
   @Get('list')
   async getList() {
     return this.crmUsersService.getCrmUsers();

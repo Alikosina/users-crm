@@ -2,8 +2,7 @@ import { Module } from '@nestjs/common';
 import { CrmUsersService } from './crm-users.service';
 import { CrmUsersController } from './crm-users.controller';
 import { PrismaService } from 'src/prisma.service';
-import { JwtModule, JwtService } from '@nestjs/jwt';
-import { JwtStrategy } from 'src/auth/jwt.strategy';
+import { JwtModule } from '@nestjs/jwt';
 
 @Module({
   imports: [
