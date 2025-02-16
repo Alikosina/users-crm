@@ -4,10 +4,12 @@ import { ConfigModule } from '@nestjs/config';
 import { AuthModule } from './auth/auth.module';
 import { CrmUsersModule } from './crm-users/crm-users.module';
 import { ATGuard } from './common/guards';
+import { PrismaModule } from './prisma/prisma.module';
 
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
+    PrismaModule,
     AuthModule,
     CrmUsersModule,
   ],

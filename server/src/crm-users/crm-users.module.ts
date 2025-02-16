@@ -1,11 +1,10 @@
 import { Module } from '@nestjs/common';
 import { CrmUsersService } from './crm-users.service';
 import { CrmUsersController } from './crm-users.controller';
-import { PrismaService } from 'src/prisma.service';
 
 @Module({
   imports: [],
-  providers: [CrmUsersService, PrismaService],
+  providers: [CrmUsersService],
   controllers: [CrmUsersController],
 })
 export class CrmUsersModule {}
