@@ -1,28 +1,32 @@
-import { Injectable, UnauthorizedException } from '@nestjs/common';
+import { ForbiddenException, Injectable } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
 import { PassportStrategy } from '@nestjs/passport';
+import { Request } from 'express';
 import { ExtractJwt, Strategy } from 'passport-jwt';
-import { PrismaService } from 'src/prisma/prisma.service';
+import { JwtPayload, JwtPayloadWithRt } from '../types';
 
 @Injectable()
 export class RTStrategy extends PassportStrategy(Strategy, 'jwt-refresh') {
-  constructor(private prisma: PrismaService) {
+  constructor(config: ConfigService) {
     super({
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
       ignoreExpiration: false,
-      secretOrKey: process.env.JWT_REFRESH_SECRET || 'refreshSecretKey',
+      secretOrKey: config.get<string>('RT_SECRET'),
+      passReqToCallback: true,
     });
   }
 
-  async validate(payload: any) {
-    const authUser = await this.prisma.user.findUnique({
-      where: { id: payload.sub },
-    });
-    if (!authUser) {
-      throw new UnauthorizedException();
-    }
+  validate(req: Request, payload: JwtPayload): JwtPayloadWithRt {
+    const refreshToken = req
+      ?.get('authorization')
+      ?.replace('Bearer', '')
+      .trim();
+
+    if (!refreshToken) throw new ForbiddenException('Refresh token malformed');
+
     return {
-      attributes: authUser,
-      refreshTokenExpiresAt: new Date(payload.exp * 1000),
+      ...payload,
+      refreshToken,
     };
   }
 }

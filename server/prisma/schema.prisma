@@ -17,6 +17,8 @@ model User {
   lastName  String?
 
   password String
+
+  hashedRt String?
 }
 
 model CrmUser {
