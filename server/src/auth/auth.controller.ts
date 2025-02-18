@@ -12,7 +12,7 @@ import { RTGuard } from '../common/guards/rt.guard';
 
 import { GetCurrentUser, GetCurrentUserId, Public } from '../common/decorators';
 import { AuthService } from './auth.service';
-import { Tokens } from './types';
+import { LoginParams, Tokens, User } from './types';
 
 @Controller('auth')
 export class AuthController {
@@ -20,7 +20,7 @@ export class AuthController {
 
   @Public()
   @Post('login')
-  async login(@Body() req: { email: string; password: string }) {
+  async login(@Body() req: LoginParams) {
     return this.authService.login(req);
   }
 
@@ -37,7 +37,7 @@ export class AuthController {
   }
 
   @Get('profile')
-  getProfile(@Request() req) {
+  getProfile(@Request() req): Promise<User> {
     return req.user;
   }
 
