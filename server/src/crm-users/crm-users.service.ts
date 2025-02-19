@@ -47,7 +47,7 @@ export class CrmUsersService {
     }
   }
 
-  async updateCrmuser({
+  async updateCrmUser({
     id,
     data,
   }: {

@@ -1,4 +1,12 @@
-import { Body, Controller, Get, Param, Post, UseGuards } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Param,
+  Post,
+  Put,
+  UseGuards,
+} from '@nestjs/common';
 import { CrmUsersService } from './crm-users.service';
 import { CrmUser } from './types';
 
@@ -21,5 +29,13 @@ export class CrmUsersController {
   @Get(':id')
   async getItem(@Param('id') id: string) {
     return this.crmUsersService.getCrmUserById(Number(id));
+  }
+
+  @Put(':id')
+  async updateItem(@Param('id') id: string, @Body() req: Partial<CrmUser>) {
+    return this.crmUsersService.updateCrmUser({
+      id: Number(id),
+      data: req,
+    });
   }
 }
