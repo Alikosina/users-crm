@@ -1,3 +1,4 @@
+import { Tokens } from "@/shared/lib";
 import { apiClient } from "@/shared/lib/apiClient";
 
 export type LoginParams = {
@@ -6,12 +7,10 @@ export type LoginParams = {
 };
 
 export const login = async ({ email, password }: LoginParams) => {
-  const { data } = await apiClient.post<{
-    accessToken: string;
-  }>("/auth/login", {
+  const { data } = await apiClient.post<Tokens>("/auth/login", {
     email,
     password,
   });
 
-  return data.accessToken;
+  return data;
 };

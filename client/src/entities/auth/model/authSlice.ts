@@ -1,3 +1,4 @@
+import { setTokens } from "@/shared/lib";
 import { createSlice } from "@reduxjs/toolkit";
 import { loginUser } from "./authActions";
 
@@ -29,8 +30,7 @@ const authSlice = createSlice({
   reducers: {},
   extraReducers: ({ addCase }) => {
     addCase(loginUser.fulfilled, (state, { payload }) => {
-      // TODO: Save at Local Storage
-      console.log("accessToken = ", payload);
+      setTokens(payload);
 
       state.isAuthorized = true;
     });
