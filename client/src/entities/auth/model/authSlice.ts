@@ -13,10 +13,10 @@ export enum AuthStatus {
 }
 
 const initialState: {
-  user: TUser | undefined;
+  user?: TUser;
   isAuthorized: boolean;
   status: "idle" | "loading" | "failed";
-  error: string | undefined;
+  error?: string;
 } = {
   user: undefined,
   isAuthorized: false,
