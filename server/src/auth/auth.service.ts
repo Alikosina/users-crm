@@ -9,7 +9,7 @@ import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
 
 import { PrismaService } from '../prisma/prisma.service';
-import { JwtPayload, LoginParams, Tokens } from './types';
+import { JwtPayload, LoginParams, Tokens, User } from './types';
 
 @Injectable()
 export class AuthService {
@@ -26,6 +26,16 @@ export class AuthService {
       return result;
     }
     return null;
+  }
+
+  async findByEmail(email: string): Promise<User> {
+    const user = await this.prisma.user.findUnique({
+      where: {
+        email,
+      },
+    });
+
+    return user;
   }
 
   async login(data: LoginParams) {

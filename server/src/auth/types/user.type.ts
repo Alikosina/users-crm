@@ -2,7 +2,7 @@ import { IsEmail, IsNotEmpty } from 'class-validator';
 
 export class User {
   @IsNotEmpty()
-  readonly id: string;
+  readonly id: number;
 
   @IsEmail()
   @IsNotEmpty()

@@ -14,3 +14,9 @@ export const login = async ({ email, password }: LoginParams) => {
 
   return data;
 };
+
+export const fetchUserProfile = async () => {
+  const { data } = await apiClient.get("/auth/profile");
+
+  return data;
+};

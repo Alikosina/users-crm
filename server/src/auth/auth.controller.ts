@@ -38,7 +38,7 @@ export class AuthController {
 
   @Get('profile')
   getProfile(@Request() req): Promise<User> {
-    return req.user;
+    return this.authService.findByEmail(req.user.email);
   }
 
   @Public()

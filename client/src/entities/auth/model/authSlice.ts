@@ -1,27 +1,14 @@
 import { setTokens } from "@/shared/lib";
 import { createSlice } from "@reduxjs/toolkit";
 import { loginUser } from "./authActions";
+import { AuthStatus, TAuthState } from "./types";
 
-export type TUser = {
-  email: string;
-};
-
-export enum AuthStatus {
-  Idle = "idle",
-  Loading = "loading",
-  Failed = "failed",
-}
-
-const initialState: {
-  user?: TUser;
-  isAuthorized: boolean;
-  status: "idle" | "loading" | "failed";
-  error?: string;
-} = {
+const initialState: TAuthState = {
   user: undefined,
   isAuthorized: false,
-  status: "idle",
+  status: AuthStatus.Idle,
   error: undefined,
+  token: null,
 };
 
 const authSlice = createSlice({
@@ -29,11 +16,18 @@ const authSlice = createSlice({
   name: "auth",
   reducers: {},
   extraReducers: ({ addCase }) => {
-    addCase(loginUser.fulfilled, (state, { payload }) => {
-      setTokens(payload);
+    addCase(loginUser.pending, (state) => {
+      state.status = AuthStatus.Loading;
+    }),
+      addCase(loginUser.fulfilled, (state, { payload }) => {
+        setTokens(payload.tokens);
 
-      state.isAuthorized = true;
-    });
+        if (payload.tokens.access_token) {
+          state.token = payload.tokens.access_token;
+          state.isAuthorized = true;
+          state.status = AuthStatus.Idle;
+        }
+      });
   },
 });
 
