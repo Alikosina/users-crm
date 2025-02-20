@@ -20,8 +20,6 @@ const authSlice = createSlice({
       state.status = AuthStatus.Loading;
     }),
       addCase(loginUser.fulfilled, (state, { payload }) => {
-        setTokens(payload.tokens);
-
         if (payload.tokens.access_token) {
           state.token = payload.tokens.access_token;
           state.isAuthorized = true;

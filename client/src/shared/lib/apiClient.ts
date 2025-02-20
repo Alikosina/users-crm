@@ -1,6 +1,6 @@
 import axios from "axios";
 import { apiUrl } from "../constants";
-import { getAccessToken } from "./tokens";
+import { getAccessToken, getRefreshToken, setTokens, Tokens } from "./tokens";
 
 let store: any;
 
@@ -21,8 +21,31 @@ apiClient.interceptors.request.use(async (req) => {
 
   return req;
 });
-apiClient.interceptors.response.use(async (resp) => {
-  return resp;
-});
+apiClient.interceptors.response.use(
+  async (resp) => {
+    return resp;
+  },
+  async (err) => {
+    if (err.response.status === 401) {
+      const refreshToken = getRefreshToken();
+
+      const { data } = await axios.post<Tokens>(
+        `${apiUrl}/auth/refresh`,
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${refreshToken}`,
+          },
+        }
+      );
+
+      setTokens(data);
+
+      return apiClient(err.config);
+    }
+
+    return err;
+  }
+);
 
 export { apiClient };
