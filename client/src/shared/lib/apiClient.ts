@@ -12,7 +12,6 @@ const apiClient = axios.create({
   baseURL: apiUrl,
 });
 
-// TODO: Add passing Access Token Logic and Refresh Token Logic
 apiClient.interceptors.request.use(async (req) => {
   if (req.url !== "/auth/login" && req.url !== "/auth/register") {
     const token = getAccessToken();
