@@ -28,8 +28,12 @@ export class AuthService {
     return null;
   }
 
-  async findByEmail(email: string): Promise<User> {
+  async findByEmail(email: string): Promise<Omit<User, 'password'>> {
     const user = await this.prisma.user.findUnique({
+      omit: {
+        password: true,
+        hashedRt: true,
+      },
       where: {
         email,
       },

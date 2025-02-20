@@ -37,7 +37,7 @@ export class AuthController {
   }
 
   @Get('profile')
-  getProfile(@Request() req): Promise<User> {
+  getProfile(@Request() req): Promise<Omit<User, 'password'>> {
     return this.authService.findByEmail(req.user.email);
   }
 
