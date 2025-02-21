@@ -1,5 +1,6 @@
 import { Tokens } from "@/shared/lib";
 import { apiClient } from "@/shared/lib/apiClient";
+import { TUser } from "../model/types";
 
 export type LoginParams = {
   email: string;
@@ -15,7 +16,7 @@ export const login = async ({ email, password }: LoginParams) => {
   return data;
 };
 
-export const fetchUserProfile = async () => {
+export const fetchUserProfile = async (): Promise<TUser> => {
   const { data } = await apiClient.get("/auth/profile");
 
   return data;

@@ -4,6 +4,7 @@ export enum AuthStatus {
   Idle = "idle",
   Loading = "loading",
   Failed = "failed",
+  Succeeded = "succeeded",
 }
 
 export type TAuthState = {

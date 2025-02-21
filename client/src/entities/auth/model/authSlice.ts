@@ -1,6 +1,6 @@
 import { setTokens } from "@/shared/lib";
 import { createSlice } from "@reduxjs/toolkit";
-import { loginUser } from "./authActions";
+import { fetchUser, loginUser } from "./authActions";
 import { AuthStatus, TAuthState } from "./types";
 
 const initialState: TAuthState = {
@@ -18,14 +18,25 @@ const authSlice = createSlice({
   extraReducers: ({ addCase }) => {
     addCase(loginUser.pending, (state) => {
       state.status = AuthStatus.Loading;
-    }),
-      addCase(loginUser.fulfilled, (state, { payload }) => {
-        if (payload.tokens.access_token) {
-          state.token = payload.tokens.access_token;
-          state.isAuthorized = true;
-          state.status = AuthStatus.Idle;
-        }
-      });
+    });
+    addCase(loginUser.fulfilled, (state, { payload }) => {
+      if (payload.tokens.access_token) {
+        state.token = payload.tokens.access_token;
+        state.isAuthorized = true;
+        state.status = AuthStatus.Succeeded;
+      }
+    });
+    addCase(fetchUser.pending, (state) => {
+      state.status = AuthStatus.Loading;
+    });
+    addCase(fetchUser.fulfilled, (state, { payload }) => {
+      state.user = payload;
+      state.isAuthorized = true;
+      state.status = AuthStatus.Succeeded;
+    });
+    addCase(fetchUser.rejected, (state) => {
+      state.status = AuthStatus.Failed;
+    });
   },
 });
 

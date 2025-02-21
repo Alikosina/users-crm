@@ -22,3 +22,9 @@ export const loginUser = createAsyncThunk<
     userProfile,
   };
 });
+
+export const fetchUser = createAsyncThunk("auth/fetchUser", async () => {
+  const userProfile = await fetchUserProfile();
+
+  return userProfile;
+});
