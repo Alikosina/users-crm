@@ -18,9 +18,11 @@ const usersSlice = createSlice({
     });
     addCase(fetchUsersAction.fulfilled, (state, { payload }) => {
       state.data = payload;
+      state.loading = false;
     });
     addCase(fetchUsersAction.rejected, (state, { payload }) => {
       state.error = "Error";
+      state.loading = false;
     });
   },
 });

@@ -1,6 +1,6 @@
 import styles from "./Table.module.scss";
 
-type Column<T extends unknown> = {
+export type Column<T extends unknown> = {
   key: string;
   title: string;
   renderCell?: (row: T) => React.ReactNode;

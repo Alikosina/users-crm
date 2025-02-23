@@ -6,6 +6,7 @@ import { ProtectedRoute } from "@/entities/auth";
 export const appRouter = () =>
   createBrowserRouter([
     {
+      // TODO: move router paths to @/shared/constants
       path: "/",
       element: (
         <ProtectedRoute>
