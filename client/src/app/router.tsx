@@ -5,6 +5,7 @@ import { LoginPage } from "@/pages/login";
 import { ProtectedRoute } from "@/entities/auth";
 import { CrmUserPage } from "@/pages/crm-user";
 import { APP_ROUTES } from "@/shared/constants";
+import { RegisterPage } from "@/pages/register";
 
 export const appRouter = () =>
   createBrowserRouter([
@@ -35,5 +36,9 @@ export const appRouter = () =>
     {
       path: APP_ROUTES.Login,
       element: <LoginPage />,
+    },
+    {
+      path: APP_ROUTES.Register,
+      element: <RegisterPage />,
     },
   ]);

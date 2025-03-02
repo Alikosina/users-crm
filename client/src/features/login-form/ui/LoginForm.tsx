@@ -11,8 +11,10 @@ import { LoginParams } from "@/entities/auth/api";
 
 import styles from "./LoginForm.module.scss";
 import { useNavigate } from "react-router";
+import { APP_ROUTES } from "@/shared/constants";
 
 export const LoginForm = () => {
+  // TODO: Replace logic to model folder
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
 
@@ -43,7 +45,9 @@ export const LoginForm = () => {
     [methods]
   );
 
-  const handleRegister = useCallback(() => {}, []);
+  const handleRegister = useCallback(() => {
+    navigate(APP_ROUTES.Register);
+  }, []);
 
   return (
     <div>

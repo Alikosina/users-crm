@@ -8,7 +8,9 @@ export const AuthLayout = ({ children }: { children: React.ReactNode }) => {
       <div className={styles.aside}>
         <img width={600} src={bg} />
       </div>
-      <div className={styles.main}>{children}</div>
+      <div className={styles.main}>
+        <div className={styles.card}>{children}</div>
+      </div>
     </div>
   );
 };

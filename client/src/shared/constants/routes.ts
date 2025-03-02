@@ -4,4 +4,5 @@ export const APP_ROUTES = {
   CrmUserCreate: "/crm-user/create",
   CrmUserEdit: "/crm-user/edit/:id",
   Login: "/login",
+  Register: "/register",
 };
