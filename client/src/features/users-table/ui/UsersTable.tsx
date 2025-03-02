@@ -25,7 +25,7 @@ export const UsersTable = () => {
         key: "actions",
         title: "",
         renderCell: (row) => (
-          <div>
+          <div className={styles.actions}>
             <Edit
               className={styles.icon}
               onClick={() => {
