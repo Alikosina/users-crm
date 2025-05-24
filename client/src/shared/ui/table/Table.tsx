@@ -38,6 +38,11 @@ export const Table = <T extends unknown>({
               ))}
             </tr>
           ))}
+          {!data.length && <tr className={styles.emptyRow}>
+            <td colSpan={columns.length} className={styles.empty}>
+              No data
+            </td>
+          </tr>}
         </tbody>
       </table>
     </div>
