@@ -1,6 +1,6 @@
 import { useCallback, useEffect } from "react";
 import { FormProvider, useForm } from "react-hook-form";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Grid2 } from "@mui/material";
 
 import { AppDispatch } from "@/app/store";
@@ -12,14 +12,13 @@ import { LoginParams } from "@/entities/auth/api";
 import styles from "./LoginForm.module.scss";
 import { useNavigate } from "react-router";
 import { APP_ROUTES } from "@/shared/constants";
+import { useAppSelector } from "@/app/store";
 
 export const LoginForm = () => {
-  // TODO: Replace logic to model folder
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
 
-  // TODO: Replace "any" by AppState
-  const isAuthorized = useSelector((state: any) => state.auth.isAuthorized);
+  const isAuthorized = useAppSelector((state) => state.auth.isAuthorized);
 
   const methods = useForm({
     defaultValues: {
@@ -32,7 +31,7 @@ export const LoginForm = () => {
     if (isAuthorized) {
       navigate("/");
     }
-  }, [isAuthorized]);
+  }, [isAuthorized, navigate]);
 
   const handleLogin = useCallback(
     (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {

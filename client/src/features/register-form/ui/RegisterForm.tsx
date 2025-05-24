@@ -7,7 +7,7 @@ import { useRegisterForm } from "../model";
 import styles from "./RegisterForm.module.scss";
 
 export const RegisterForm = () => {
-  const { methods } = useRegisterForm();
+  const { methods, handleLogin } = useRegisterForm();
 
   return (
     <div>
@@ -39,7 +39,7 @@ export const RegisterForm = () => {
                   </Button>
                 </div>
                 <div>
-                  <Button fullWidth onClick={() => {}}>
+                  <Button fullWidth onClick={handleLogin}>
                     Login
                   </Button>
                 </div>

@@ -1,5 +1,5 @@
 import { IsNotEmpty, IsDateString, IsEmail, IsEnum } from 'class-validator';
-import { CrmUser as PrismaCrmUser, CrmUserStatus } from '@prisma/client';
+import { CrmUserStatus } from '@prisma/client';
 
 export class CrmUser {
   @IsNotEmpty()
