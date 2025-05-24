@@ -2,6 +2,7 @@ import axios from "axios";
 import { apiUrl } from "../constants";
 import { getAccessToken, getRefreshToken, setTokens, Tokens } from "./tokens";
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 let store: any;
 
 export const injectStore = (_store: any) => {

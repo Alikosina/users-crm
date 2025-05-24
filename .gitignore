@@ -25,3 +25,5 @@ client/.vscode/*
 *.sln
 *.sw?
 *.env
+
+.vscode

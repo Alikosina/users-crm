@@ -1,5 +1,6 @@
 import styles from "./Table.module.scss";
 
+// eslint-disable-next-line @typescript-eslint/no-unnecessary-type-constraint
 export type Column<T extends unknown> = {
   key: string;
   title: string;
@@ -7,12 +8,13 @@ export type Column<T extends unknown> = {
   width?: string | number;
 };
 
-type Props<T extends unknown> = {
+type Props<T> = {
   data: T[];
   rowKey: keyof T;
   columns: Array<Column<T>>;
 };
 
+// eslint-disable-next-line @typescript-eslint/no-unnecessary-type-constraint
 export const Table = <T extends unknown>({
   data,
   columns,

@@ -8,6 +8,7 @@ export const fetchUsersAction = createAsyncThunk<TCrmUser[]>(
     try {
       return await fetchUsers();
     } catch (error) {
+      console.error(error);
       throw error;
     }
   }

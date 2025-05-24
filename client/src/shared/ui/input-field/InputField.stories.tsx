@@ -2,13 +2,14 @@ import { Grid2 } from "@mui/material";
 import type { Meta, StoryObj } from "@storybook/react";
 import { FormProvider, useForm } from "react-hook-form";
 import { Button } from "../button";
-import { Input } from "../input/Input";
+// import { Input } from "../input/Input";
 
 import { InputField } from "./InputField";
 
 const meta: Meta<typeof InputField> = {
   component: InputField,
   render: () => {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     const methods = useForm({
       defaultValues: {
         login: "login",

@@ -1,4 +1,3 @@
-import { setTokens } from "@/shared/lib";
 import { createSlice } from "@reduxjs/toolkit";
 import { fetchUser, loginUser } from "./authActions";
 import { AuthStatus, TAuthState } from "./types";

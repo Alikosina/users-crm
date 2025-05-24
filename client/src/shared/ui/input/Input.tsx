@@ -1,4 +1,4 @@
-import { forwardRef, InputHTMLAttributes, RefAttributes } from "react";
+import { forwardRef, InputHTMLAttributes } from "react";
 import cn from "classnames";
 
 import styles from "./Input.module.scss";

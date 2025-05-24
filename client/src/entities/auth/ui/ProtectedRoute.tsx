@@ -1,5 +1,5 @@
 import { AppDispatch, RootState } from "@/app/store";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Navigate } from "react-router";
 import { fetchUser } from "../model/authActions";

@@ -20,7 +20,7 @@ const usersSlice = createSlice({
       state.data = payload;
       state.loading = false;
     });
-    addCase(fetchUsersAction.rejected, (state, { payload }) => {
+    addCase(fetchUsersAction.rejected, (state) => {
       state.error = "Error";
       state.loading = false;
     });
